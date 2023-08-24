@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+  <meta charset="utf-8">
+  <title>Countdown Clock</title>
+  <meta name="description" content="The Clock will disappear once it has expired">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <!-- [if lt IE 9] -->
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+  <!-- [endif] -->
+  </head>
+  <body>
+  <!----- header----->
+  <header>ヘッダー</header>
+  <nav>ナビ</nav>
+  <!----- /header ----->
+
+  <!----- main ----->
+  <article>
+  <h1>タイトル</h1>
+  <section>
+  <h2>見出し２</h2>
+  <!-- Display the countdown timer in an element -->
+  <p id="demo"></p>
+  </section>
+  </article>
+  <!----- /main ----->
+
+  <!----- footer ----->
+  <footer>フッター</footer>
+  <!----- /footer ----->
+
+  <script>
+    // https://www.w3schools.com/howto/howto_js_countdown.asp
+    // the countdown will expire
+    const distance = 3;  // in seconds
+    let now = new Date().getTime();
+    let countDownDate = now + distance;
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+      // Get the current date and time
+      let now = new Date().getTime();
+      // Time calculation
+      let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      // Display the result in the element with id="demo"
+
+
+    });
+    </script>
+  </body>
+</html>
+
