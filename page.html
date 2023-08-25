@@ -24,7 +24,7 @@ p {
   </head>
   <body>
   <!----- header----->
-  <!-- <header>ヘッダー</header> -->
+  <header>Katalon Studio version: <span id="ksVersion"></span></header>
   <!-- <nav>ナビ</nav> -->
   <!----- /header ----->
 
@@ -44,6 +44,9 @@ p {
   <!----- /footer ----->
 
   <script>
+    const searchParams = new URLSearchParams(window.location.search);
+    document.getElementById("ksVersion").innerHTML = searchParams.get("ksVersion");
+
     // https://www.w3schools.com/howto/howto_js_countdown.asp
     const dist = 5;
     let start = new Date();

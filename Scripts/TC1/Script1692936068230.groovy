@@ -28,12 +28,12 @@ TestObject makeTestObject(String id, String selector) {
 	tObj.addProperty("css", ConditionType.EQUALS, selector)
 	return tObj
 }
+println "Katalon Studio version: ${RunConfiguration.getAppVersion()}"
 Path projectDir = Paths.get(RunConfiguration.getProjectDir())
 Path html = projectDir.resolve("page.html")
-
 WebUI.openBrowser('')
-WebUI.setViewPortSize(400, 600)
-WebUI.navigateToUrl(html.toFile().toURI().toURL().toExternalForm())
+WebUI.setViewPortSize(400, 400)
+WebUI.navigateToUrl(html.toFile().toURI().toURL().toExternalForm() + "?ksVersion=${RunConfiguration.getAppVersion()}")
 TestObject tObj = makeTestObject("demo", "#demo")
 
 WebUI.verifyElementPresent(tObj, 10, FailureHandling.STOP_ON_FAILURE)
