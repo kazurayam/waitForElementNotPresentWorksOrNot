@@ -42,6 +42,6 @@ if (!result) {
 	KeywordUtil.markFailed("element with id=\"demo\" still remains")
 }
 
-WebUI.takeScreenshot("screenshot.png")
+WebUI.takeScreenshot("screenshot-" + RunConfiguration.getAppVersion() + ".png")
 WebUI.delay(3);
 WebUI.closeBrowser()
