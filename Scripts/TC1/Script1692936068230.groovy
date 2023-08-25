@@ -46,4 +46,4 @@ if (!result) {
 
 WebUI.takeScreenshot("screenshot-" + RunConfiguration.getAppVersion() + ".png")
 WebUI.delay(3);
-WebUI.closeBrowser()
+//WebUI.closeBrowser()

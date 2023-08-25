@@ -53,7 +53,10 @@ p {
     document.getElementById("ksVersion").innerHTML = searchParams.get("ksVersion");
 
     // https://www.w3schools.com/howto/howto_js_countdown.asp
-    const dist = 5;
+    let dist = 5;
+    if (searchParams.get("distance") != null) {
+      dist = Number.parseInt(searchParams.get("distance"))
+    }
     let start = new Date();
     // Set the date we're conting down to
     let countDownDate = start.setSeconds(start.getSeconds() + dist);
