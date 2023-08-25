@@ -37,10 +37,13 @@ String urlString = sb.toString()
 WebUI.navigateToUrl(urlString)
 WebUI.verifyElementPresent(tObj, timeout, FailureHandling.STOP_ON_FAILURE)
 				   
-boolean result = WebUI.waitForElementNotPresent(tObj, timeout, FailureHandling.STOP_ON_FAILURE)
+boolean result = WebUI.waitForElementNotPresent(tObj, timeout)
 println "result=${result}"
-if (!result) {
-	KeywordUtil.markFailed("element with id=\"demo\" still remains")
+
+if (result) {
+	KeywordUtil.logInfo("WebUI.waitForElement returned ${result} after timeout ${timeout}")
+} else {
+	KeywordUtil.markFailed("WebUI.waitForElement returned ${result} after timeout ${timeout}")
 }
 
 Path outfile = outDir.resolve(RunConfiguration.getAppVersion() + "_d" + distance + "_t" + timeout + ".png")
