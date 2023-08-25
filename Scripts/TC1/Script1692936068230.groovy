@@ -37,7 +37,9 @@ WebUI.navigateToUrl(html.toFile().toURI().toURL().toExternalForm() + "?ksVersion
 TestObject tObj = makeTestObject("demo", "#demo")
 WebUI.verifyElementPresent(tObj, 10, FailureHandling.STOP_ON_FAILURE)
 
-boolean result = WebUI.waitForElementNotPresent(tObj, 10)
+boolean result = WebUI.waitForElementNotPresent(tObj, 10, FailureHandling.STOP_ON_FAILURE)
+println "result=${result}"
+
 if (!result) {
 	KeywordUtil.markFailed("element with id=\"demo\" still remains")
 }

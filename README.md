@@ -33,24 +33,9 @@ I tried to run the TC1 using several versions of Katalon Studio
 
 I used Firefox browser for this experiment. I refrained from Chrome browser v115 and newers because Chrome recently made a [changed](https://forum.katalon.com/t/as-of-chrome-115-tools-update-webdrivers-chrome-no-longer-works/93200) that makes it difficult to compare the versions.
 
-I expected that the result will be as follows:
 
-||Katalon Studio version||Test Cases/TC1||
-|v8.6.6|PASSED|
-|v8.6.5|PASSED|
-|v8.6.0|FAILED|
-|v8.4.1|PASSED|
+## Reproducing the problem with v8.6.0
 
-## Study Result
+I installed v8.6.0; updated the WebDriver for Firefox; ran "Test Cases/TC1". See the following screenshot.
 
-I got the following result.
 
-||Katalon Studio version||Test Cases/TC1||Screenshot||
-|v8.6.6|PASSED|[img](https://github.com/kazurayam/waitForElementNotPresentWorksOrNot/blob/master/screenshot-8.6.6.208.png)|
-|v8.6.5|PASSED|[img](https://github.com/kazurayam/waitForElementNotPresentWorksOrNot/blob/master/screenshot-8.6.5.208.png)|
-|v8.6.0||
-|v8.4.1||
-
-This results matches exactly what I expected.
-
-Therefore I would express my doubt about the [post](https://forum.katalon.com/t/katalon-studio-8-6-0-waitforelementnotpresent-bug-timeout/85476/30) by @qa113.
