@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>subproc</name>
+   <name>driveKeyword</name>
    <tag></tag>
    <comment></comment>
    <testCaseGuid>60598fb5-86cb-41a6-a686-4259b9528610</testCaseGuid>
