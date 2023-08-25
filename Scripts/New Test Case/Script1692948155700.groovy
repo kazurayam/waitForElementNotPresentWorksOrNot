@@ -16,4 +16,11 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
+import java.time.LocalDateTime
+import java.time.Duration
 
+LocalDateTime startAt = LocalDateTime.now()
+WebUI.delay(3)
+LocalDateTime endAt = LocalDateTime.now()
+long timeTaken = Duration.between(startAt, endAt).getSeconds()
+println timeTaken
