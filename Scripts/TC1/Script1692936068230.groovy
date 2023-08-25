@@ -35,7 +35,6 @@ WebUI.openBrowser('')
 WebUI.setViewPortSize(400, 400)
 WebUI.navigateToUrl(html.toFile().toURI().toURL().toExternalForm() + "?ksVersion=${RunConfiguration.getAppVersion()}")
 TestObject tObj = makeTestObject("demo", "#demo")
-
 WebUI.verifyElementPresent(tObj, 10, FailureHandling.STOP_ON_FAILURE)
 
 boolean result = WebUI.waitForElementNotPresent(tObj, 10)
@@ -43,4 +42,6 @@ if (!result) {
 	KeywordUtil.markFailed("element with id=\"demo\" still remains")
 }
 
+WebUI.takeScreenshot("screenshot.png")
+WebUI.delay(3);
 WebUI.closeBrowser()
