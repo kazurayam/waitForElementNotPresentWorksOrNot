@@ -6,7 +6,6 @@ import com.kms.katalon.core.configuration.RunConfiguration
 import com.kms.katalon.core.model.FailureHandling
 import com.kms.katalon.core.testobject.ConditionType
 import com.kms.katalon.core.testobject.TestObject
-import com.kms.katalon.core.util.KeywordUtil
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
 assert distance != null
@@ -40,14 +39,7 @@ WebUI.verifyElementPresent(tObj, timeout, FailureHandling.STOP_ON_FAILURE)
 boolean result = WebUI.waitForElementNotPresent(tObj, timeout)
 println "result=${result}"
 
-if (result) {
-	KeywordUtil.logInfo("WebUI.waitForElement returned ${result} after timeout ${timeout}")
-} else {
-	KeywordUtil.markFailed("WebUI.waitForElement returned ${result} after timeout ${timeout}")
-}
-
 Path outfile = outDir.resolve(RunConfiguration.getAppVersion() + "_d" + distance + "_t" + timeout + ".png")
-
 WebUI.takeScreenshot(outfile.toString())
 
-
+return result
