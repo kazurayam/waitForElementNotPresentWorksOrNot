@@ -16,13 +16,13 @@ public class KeywordDriver {
 
 	Map<String, Object> drive(int distance, int timeout) {
 		WebUI.comment("Katalon Studio version: ${RunConfiguration.getAppVersion()}")
-		
+
 		TestObject tObj = makeTestObject("demo", "#demo")
 
 		Path projectDir = Paths.get(RunConfiguration.getProjectDir())
 		Path outDir = projectDir.resolve("screenshots")
 		Files.createDirectories(outDir)
-		Path html = projectDir.resolve("page.html")
+		Path html = projectDir.resolve("docs/page.html")
 
 		StringBuilder sb = new StringBuilder()
 		sb.append(html.toFile().toURI().toURL().toExternalForm())
@@ -30,10 +30,10 @@ public class KeywordDriver {
 		sb.append('&')
 		sb.append("distance=${distance}")
 		String urlString = sb.toString()
-		
+
 		WebUI.openBrowser('')
 		WebUI.setViewPortSize(400, 400)
-		
+
 		WebUI.navigateToUrl(urlString)
 		WebUI.verifyElementPresent(tObj, timeout, FailureHandling.STOP_ON_FAILURE)
 
@@ -46,7 +46,7 @@ public class KeywordDriver {
 		WebUI.takeScreenshot(outfile.toString())
 
 		WebUI.closeBrowser()
-		
+
 		return ["distance": distance, "timeout": timeout, "kwReturn": kwReturn, "kwDuration": kwDuration]
 	}
 
