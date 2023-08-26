@@ -49,3 +49,24 @@ Please read the source codes for detail.
 - link:https://github.com/kazurayam/waitForElementNotPresentWorksOrNot/blob/master/Scripts/TC2_d10_t13/Script1693013995141.groovy[Test Cases/TC2_d10_t14]
 - link:https://github.com/kazurayam/waitForElementNotPresentWorksOrNot/blob/master/Keywords/com/kazurayam/ks/waitforelementnotpresent/KeywordDriver.groovy[com.kazurayam.ks.waitforelementnotpresent.KeywordDriver]
 - link:https://github.com/kazurayam/waitForElementNotPresentWorksOrNot/blob/master/Keywords/com/kazurayam/ks/waitforelementnotpresent/ResultEvaluator.groovy[com.kazurayam.ks.waitforelementnotpresent.ResultEvaluator]
+
+== Examining
+
+=== using Katalon Studio v8.6.0
+
+==== Test Cases/TC1_d10_t7
+
+10 seconds of clock distance, 7 seconds of kewyord timeout
+
+https://youtu.be/SMwrdctzoV4[v8.6.0 TC1_d10_t7]
+
+==== Test Cases/TC2_d10_t13
+
+10 seconds of distance, timeout: 13secs
+https://youtu.be/Wx_MCK0QnMk[v8.6.0 TC2_d10_t13]
+
+=== using Katalon Studio v8.6.5
+
+==== Test Cases/TC2_d10_t13
+
+https://youtu.be/jY1ESJ1H21w[v8.6.5 TC2_d10_t13]
