@@ -57,3 +57,24 @@ Please read the source codes for detail.
 -   [com.kazurayam.ks.waitforelementnotpresent.KeywordDriver](https://github.com/kazurayam/waitForElementNotPresentWorksOrNot/blob/master/Keywords/com/kazurayam/ks/waitforelementnotpresent/KeywordDriver.groovy)
 
 -   [com.kazurayam.ks.waitforelementnotpresent.ResultEvaluator](https://github.com/kazurayam/waitForElementNotPresentWorksOrNot/blob/master/Keywords/com/kazurayam/ks/waitforelementnotpresent/ResultEvaluator.groovy)
+
+## Examining
+
+### using Katalon Studio v8.6.0
+
+#### Test Cases/TC1\_d10\_t7
+
+10 seconds of clock distance, 7 seconds of kewyord timeout
+
+[v8.6.0 TC1\_d10\_t7](https://youtu.be/SMwrdctzoV4)
+
+#### Test Cases/TC2\_d10\_t13
+
+10 seconds of distance, timeout: 13secs
+[v8.6.0 TC2\_d10\_t13](https://youtu.be/Wx_MCK0QnMk)
+
+### using Katalon Studio v8.6.5
+
+#### Test Cases/TC2\_d10\_t13
+
+[v8.6.5 TC2\_d10\_t13](https://youtu.be/jY1ESJ1H21w)

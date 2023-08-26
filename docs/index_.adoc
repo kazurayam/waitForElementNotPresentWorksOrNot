@@ -58,7 +58,10 @@ Please read the source codes for detail.
 
 10 seconds of clock distance, 7 seconds of kewyord timeout
 
+video::SMwrdctzoV4[v8.6.0 TC1_d10_t7]
+
 https://youtu.be/SMwrdctzoV4[v8.6.0 TC1_d10_t7]
+
 
 ==== Test Cases/TC2_d10_t13
 
