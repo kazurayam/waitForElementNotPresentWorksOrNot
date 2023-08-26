@@ -7,6 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- <link rel="stylesheet" href="style.css"> -->
   <style type="text/css">
+body {
+  background-color: lightgray;
+}
 p {
   text-align: center!important;
   margin-top: 1.2em;
@@ -18,7 +21,7 @@ p {
 }
 #msg {
   font-size: 32px;
-  color: #ff6622;
+  color: #ff3300;
 }
   </style>
   <!-- [if lt IE 9] -->
@@ -53,7 +56,7 @@ p {
     document.getElementById("ksVersion").innerHTML = searchParams.get("ksVersion");
 
     // https://www.w3schools.com/howto/howto_js_countdown.asp
-    let dist = 5;
+    let dist = 10;
     if (searchParams.get("distance") != null) {
       dist = Number.parseInt(searchParams.get("distance"))
     }

@@ -15,22 +15,31 @@ Based on the findings in the examination, I would conclude that the problem was 
 
 == Description
 
+What was the original issue? How can I conclude the problem was fixed already? --- I will describe it as follows.
+
+
 === Download the project
 
 You can download the zip of this project from the link:https://github.com/kazurayam/waitForElementNotPresentWorksOrNot/releases[Releases] page, unzip it, open it with your local Katalon Studio.
 
 === Application Under Test
 
-You can see our Application Under Test at link:https://kazurayam.github.io/waitForElementNotPresentWorksOrNot
+You can see our Application Under Test at link:https://kazurayam.github.io/waitForElementNotPresentWorksOrNot/page.html[]
 
-The page shows a Count down clock.
+The page shows a Countdown clock. The clock has a countdown distance of 10 seconds as default.
 
 image::https://kazurayam.github.io/waitForElementNotPresentWorksOrNot/images/AUT_countDownClock.png[Countdown Clock]
 
-In 10 seconds after the page was opened, the clock will reach to zero, then the clock will disappear.
+Internally the HTML contains an P element with id="demo" as follows:
+```
+<p id="demo">0d 0h 0m 4s</p>
+```
+
+When the countdown clock reaches zero, then the clock will disappear; a message "Gone!" comes up.
 
 image::https://kazurayam.github.io/waitForElementNotPresentWorksOrNot/images/AUT_gone.png[GONE]
 
+Internally, the `<p id="demo">` element is removed when the clock reached zero.
 
 
 

@@ -20,9 +20,9 @@ public class KeywordDriver {
 		TestObject tObj = makeTestObject("demo", "#demo")
 
 		Path projectDir = Paths.get(RunConfiguration.getProjectDir())
+		Path html = projectDir.resolve("docs/page.html")
 		Path outDir = projectDir.resolve("screenshots")
 		Files.createDirectories(outDir)
-		Path html = projectDir.resolve("docs/page.html")
 
 		StringBuilder sb = new StringBuilder()
 		sb.append(html.toFile().toURI().toURL().toExternalForm())
@@ -33,17 +33,19 @@ public class KeywordDriver {
 
 		WebUI.openBrowser('')
 		WebUI.setViewPortSize(400, 400)
-
 		WebUI.navigateToUrl(urlString)
+		WebUI.delay(1)
 		WebUI.verifyElementPresent(tObj, timeout, FailureHandling.STOP_ON_FAILURE)
 
+		String screenshotPrefix = RunConfiguration.getAppVersion() + "_d" + distance + "_t" + timeout		
+		WebUI.takeScreenshot(outDir.resolve(screenshotPrefix + "_x.png").toString())
+		
 		LocalDateTime startAt = LocalDateTime.now()
 		boolean kwReturn = WebUI.waitForElementNotPresent(tObj, timeout)
 		LocalDateTime endAt = LocalDateTime.now()
 		long kwDuration = Duration.between(startAt, endAt).getSeconds()
 
-		Path outfile = outDir.resolve(RunConfiguration.getAppVersion() + "_d" + distance + "_t" + timeout + ".png")
-		WebUI.takeScreenshot(outfile.toString())
+		WebUI.takeScreenshot(outDir.resolve(screenshotPrefix + "_y.png").toString())
 
 		WebUI.closeBrowser()
 
