@@ -6,52 +6,54 @@
 ## Problem to solve
 
 In the Katalon User forum, there was a post
-<https://forum.katalon.com/t/katalon-studio-8-6-0-waitforelementnotpresent-bug-timeout/85476>. The original post reported that, at v8.6.0, [WebUI.waitForElementPresent](https://docs.katalon.com/docs/create-tests/keywords/keyword-description-in-katalon-studio/web-ui-keywords/webui-wait-for-element-not-present) keyword failed to work.
+["Katalon Studio 8.6.0 - waitForElementNotPresent - bug - timeout"](https://forum.katalon.com/t/katalon-studio-8-6-0-waitforelementnotpresent-bug-timeout/85476). The original post reported that, at v8.6.0, [WebUI.waitForElementPresent](https://docs.katalon.com/docs/create-tests/keywords/keyword-description-in-katalon-studio/web-ui-keywords/webui-wait-for-element-not-present) keyword failed to work. Later, @vu.tran reported that, at v8.6.5, [the bug was fixed](https://forum.katalon.com/t/katalon-studio-8-6-0-waitforelementnotpresent-bug-timeout/85476/30). However, [@qa113 wrote](https://forum.katalon.com/t/katalon-studio-8-6-0-waitforelementnotpresent-bug-timeout/85476/31) that the bug still remains in v8.6.5.
 
-Later, @vu.tran reported that, at v8.6.5, [the bug was fixed](https://forum.katalon.com/t/katalon-studio-8-6-0-waitforelementnotpresent-bug-timeout/85476/30).
+The bug of waitForElementNotPresent keyword --- is it fixed at v8.6.5 or not?
 
-However, [@qa113 wrote](https://forum.katalon.com/t/katalon-studio-8-6-0-waitforelementnotpresent-bug-timeout/85476/31) that the bug still remains in v8.6.5.
+## Solution
 
-The bug of waitForElementNotPresent keyword --- is it fixed or not?
+I have developed a Katalon Studio project [kazurayam/waitForElementNotPresentWorksOrNot](https://github.com/kazurayam/waitForElementNotPresentWorksOrNot). With it, I examined how `WebUI.waitForElementNotPresent` keyword. How does the keyword works in v8.6.0 and in v8.6.5.
 
-# Solution
+Based on the findings in the examination, I would conclude that the problem was already fixed at v8.6.5.
 
-I have developed a Katalon Studio project [kazurayam/waitForElementNotPresentWorksOrNot](https://github.com/kazurayam/waitForElementNotPresentWorksOrNot). With it, I checked how `waitForElementNotPresent` keyword worked in Katalon Studio version 8.6.0, and also checked how the keyword works in ks v8.6.5.
+## Description
 
-Based on that study, I would conclude that the problem was fixed at v8.6.5. I guess, [@qa113's post](https://forum.katalon.com/t/katalon-studio-8-6-0-waitforelementnotpresent-bug-timeout/85476/31) is another issue.
+What was the original issue? How can I conclude the problem was fixed already? --- I will describe it as follows.
 
-# Description
+### Download the project
 
-## Download the project
+You can download the zip of this project from the [Releases](https://github.com/kazurayam/waitForElementNotPresentWorksOrNot/releases) page, unzip it, open it with your local Katalon Studio.
 
-You can download the zip of this project from the [Releases]()(<https://github.com/kazurayam/waitForElementNotPresentWorksOrNot/releases>) page, unzip it, open it with your local Katalon Studio.
+### Application Under Test
 
-## Application Under Test
+You can see our Application Under Test at <https://kazurayam.github.io/waitForElementNotPresentWorksOrNot/page.html>
 
--   [Application Under Test](https://kazurayam.github.io/waitForElementNotPresentWorksOrNot)
+The page shows a Countdown clock. The clock has a countdown distance of 10 seconds as default.
 
 <figure>
-<img src="https://kazurayam.github.io/waitForElementNotPresentWorksOrNot/images/AUT_countdownclock.png" alt="Countdown Clock" />
+<img src="https://kazurayam.github.io/waitForElementNotPresentWorksOrNot/images/AUT_countDownClock.png" alt="Countdown Clock" />
 </figure>
+
+Internally the HTML contains an P element with id="demo" as this:
+
+    <p id="demo">0d 0h 0m 8s</p>
+
+When the countdown clock reaches zero, then the clock will disappear. A message "Gone!" comes up.
 
 <figure>
 <img src="https://kazurayam.github.io/waitForElementNotPresentWorksOrNot/images/AUT_gone.png" alt="GONE" />
 </figure>
 
-The project contains an HTML file \[page.html\](<https://github.com/kazurayam/waitForElementNotPresentWorksOrNot/blob/master/page.html>) which displays a countdown clock which will expire quickly in 5 seconds. When the clock expires, an HTML element with id="demo" will be removed.
+Internally, the `<p id="demo">0d 0h 0m Xs</p>` element will be removed (becomes not present) when the clock reached zero.
 
-The project contains a script \[Test Case/TC1\](<https://github.com/kazurayam/waitForElementNotPresentWorksOrNot/blob/master/Scripts/TC1/Script1692936068230.groovy>). This script opens the page.html in a browser. The script calls "waitForElementNotPresent" keyword to check the presense of the HTML element with id="demo" while specifying the timeout 10 seconds. If the keyword could detect that the element has disappeared, the test case will PASS. If the keyword failed to detect it, the test case will FAIL.
+### Test scripts
 
-I tried to run the TC1 using several versions of Katalon Studio
+Please read the source codes for detail.
 
--   v8.6.6 currently latest version
+-   [Test Cases/TC1\_d10\_t7](https://github.com/kazurayam/waitForElementNotPresentWorksOrNot/blob/master/Scripts/TC1_d10_t7/Script1693013953158.groovy)
 
--   v8.6.0 which the original post reported the defect
+-   [Test Cases/TC2\_d10\_t14](https://github.com/kazurayam/waitForElementNotPresentWorksOrNot/blob/master/Scripts/TC2_d10_t13/Script1693013995141.groovy)
 
--   v8.4.1 with which @kazurayam compared the source code against v8.6.0
+-   [com.kazurayam.ks.waitforelementnotpresent.KeywordDriver](https://github.com/kazurayam/waitForElementNotPresentWorksOrNot/blob/master/Keywords/com/kazurayam/ks/waitforelementnotpresent/KeywordDriver.groovy)
 
-I used Firefox browser for this experiment. I refrained from Chrome browser v115 and newers because Chrome recently made a \[changed\](<https://forum.katalon.com/t/as-of-chrome-115-tools-update-webdrivers-chrome-no-longer-works/93200>) that makes it difficult to compare the versions.
-
-# Reproducing the problem with v8.6.0
-
-I installed v8.6.0; updated the WebDriver for Firefox; ran "Test Cases/TC1". See the following screenshot.
+-   [com.kazurayam.ks.waitforelementnotpresent.ResultEvaluator](https://github.com/kazurayam/waitForElementNotPresentWorksOrNot/blob/master/Keywords/com/kazurayam/ks/waitforelementnotpresent/ResultEvaluator.groovy)
