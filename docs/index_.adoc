@@ -1,37 +1,33 @@
-== WebUI.waitForElementNotPresent keyword --- was it fixed at v8.6.0 or not?
+= WebUI.waitForElementNotPresent keyword --- was it fixed at v8.6.0 or not?
 
-=== Problem to solve
+== Problem to solve
 
 In the Katalon User forum, there was a post
-https://forum.katalon.com/t/katalon-studio-8-6-0-waitforelementnotpresent-bug-timeout/85476 .
+link:https://forum.katalon.com/t/katalon-studio-8-6-0-waitforelementnotpresent-bug-timeout/85476["Katalon Studio 8.6.0 - waitForElementNotPresent - bug - timeout"]. The original post reported that, at v8.6.0, link:https://docs.katalon.com/docs/create-tests/keywords/keyword-description-in-katalon-studio/web-ui-keywords/webui-wait-for-element-not-present[WebUI.waitForElementPresent] keyword failed to work. Later, @vu.tran reported that, at v8.6.5, link:https://forum.katalon.com/t/katalon-studio-8-6-0-waitforelementnotpresent-bug-timeout/85476/30[the bug was fixed]. However, link:https://forum.katalon.com/t/katalon-studio-8-6-0-waitforelementnotpresent-bug-timeout/85476/31[@qa113 wrote] that the bug still remains in v8.6.5.
 
-Quoting from the original post by @petr.brezina :
-
->since I have updated to the new version of Katalon Studio 8.6.0, all test cases fall, because command waitForElementNotPresent is not working properly. If I run the same test case on Katalon Studio 8.5.0, test case passes successfully.
-
-The original post reported that, at v8.6.0, link:https://docs.katalon.com/docs/create-tests/keywords/keyword-description-in-katalon-studio/web-ui-keywords/webui-wait-for-element-not-present[WebUI.waitForElementPresent] keyword failed to work.
-
-Later, @vu.tran reported that, at v8.6.5, link:https://forum.katalon.com/t/katalon-studio-8-6-0-waitforelementnotpresent-bug-timeout/85476/30[the bug was fixed].
-
-However, link:https://forum.katalon.com/t/katalon-studio-8-6-0-waitforelementnotpresent-bug-timeout/85476/31[@qa113 wrote] that the bug still remains in v8.6.5.
-
-The bug of waitForElementNotPresent keyword --- is it fixed or not?
+The bug of waitForElementNotPresent keyword --- is it fixed at v8.6.5 or not?
 
 == Solution
 
-I have developed a Katalon Studio project link:https://github.com/kazurayam/waitForElementNotPresentWorksOrNot[kazurayam/waitForElementNotPresentWorksOrNot]. With it, I checked how `waitForElementNotPresent` keyword worked in Katalon Studio version 8.6.0, and also checked how the keyword works in ks v8.6.5. As a result of this study, I would conclude that the problem was fixed at v8.6.5.
+I have developed a Katalon Studio project link:https://github.com/kazurayam/waitForElementNotPresentWorksOrNot[kazurayam/waitForElementNotPresentWorksOrNot]. With it, I examined how `WebUI.waitForElementNotPresent` keyword. How does the keyword works in v8.6.0 and in v8.6.5.
+
+Based on the findings in the examination, I would conclude that the problem was already fixed at v8.6.5.
 
 == Description
 
 === Download the project
 
-You can download the zip of this project from the link:[Releases](https://github.com/kazurayam/waitForElementNotPresentWorksOrNot/releases) page, unzip it, open it with your local Katalon Studio.
+You can download the zip of this project from the link:https://github.com/kazurayam/waitForElementNotPresentWorksOrNot/releases[Releases] page, unzip it, open it with your local Katalon Studio.
 
 === Application Under Test
 
-- link:https://kazurayam.github.io/waitForElementNotPresentWorksOrNot[Application Under Test]
+You can see our Application Under Test at link:https://kazurayam.github.io/waitForElementNotPresentWorksOrNot
 
-image::https://kazurayam.github.io/waitForElementNotPresentWorksOrNot/images/AUT_countdownclock.png[Countdown Clock]
+The page shows a Count down clock.
+
+image::https://kazurayam.github.io/waitForElementNotPresentWorksOrNot/images/AUT_countDownClock.png[Countdown Clock]
+
+In 10 seconds after the page was opened, the clock will reach to zero, then the clock will disappear.
 
 image::https://kazurayam.github.io/waitForElementNotPresentWorksOrNot/images/AUT_gone.png[GONE]
 
@@ -51,6 +47,6 @@ I tried to run the TC1 using several versions of Katalon Studio
 I used Firefox browser for this experiment. I refrained from Chrome browser v115 and newers because Chrome recently made a [changed](https://forum.katalon.com/t/as-of-chrome-115-tools-update-webdrivers-chrome-no-longer-works/93200) that makes it difficult to compare the versions.
 
 
-## Reproducing the problem with v8.6.0
+== Reproducing the problem with v8.6.0
 
 I installed v8.6.0; updated the WebDriver for Firefox; ran "Test Cases/TC1". See the following screenshot.

@@ -6,13 +6,7 @@
 ## Problem to solve
 
 In the Katalon User forum, there was a post
-<https://forum.katalon.com/t/katalon-studio-8-6-0-waitforelementnotpresent-bug-timeout/85476> .
-
-Quoting from the original post by @petr.brezina :
-
-&gt;since I have updated to the new version of Katalon Studio 8.6.0, all test cases fall, because command waitForElementNotPresent is not working properly. If I run the same test case on Katalon Studio 8.5.0, test case passes successfully.
-
-The original post reported that, at v8.6.0, [WebUI.waitForElementPresent](https://docs.katalon.com/docs/create-tests/keywords/keyword-description-in-katalon-studio/web-ui-keywords/webui-wait-for-element-not-present) keyword failed to work.
+<https://forum.katalon.com/t/katalon-studio-8-6-0-waitforelementnotpresent-bug-timeout/85476>. The original post reported that, at v8.6.0, [WebUI.waitForElementPresent](https://docs.katalon.com/docs/create-tests/keywords/keyword-description-in-katalon-studio/web-ui-keywords/webui-wait-for-element-not-present) keyword failed to work.
 
 Later, @vu.tran reported that, at v8.6.5, [the bug was fixed](https://forum.katalon.com/t/katalon-studio-8-6-0-waitforelementnotpresent-bug-timeout/85476/30).
 
@@ -22,7 +16,9 @@ The bug of waitForElementNotPresent keyword --- is it fixed or not?
 
 # Solution
 
-I have developed a Katalon Studio project [kazurayam/waitForElementNotPresentWorksOrNot](https://github.com/kazurayam/waitForElementNotPresentWorksOrNot). With it, I checked how `waitForElementNotPresent` keyword worked in Katalon Studio version 8.6.0, and also checked how the keyword works in ks v8.6.5. As a result of this study, I would conclude that the problem was fixed at v8.6.5.
+I have developed a Katalon Studio project [kazurayam/waitForElementNotPresentWorksOrNot](https://github.com/kazurayam/waitForElementNotPresentWorksOrNot). With it, I checked how `waitForElementNotPresent` keyword worked in Katalon Studio version 8.6.0, and also checked how the keyword works in ks v8.6.5.
+
+Based on that study, I would conclude that the problem was fixed at v8.6.5. I guess, [@qa113's post](https://forum.katalon.com/t/katalon-studio-8-6-0-waitforelementnotpresent-bug-timeout/85476/31) is another issue.
 
 # Description
 
