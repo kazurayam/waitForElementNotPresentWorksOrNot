@@ -37,9 +37,9 @@ public class KeywordDriver {
 		WebUI.delay(1)
 		WebUI.verifyElementPresent(tObj, timeout, FailureHandling.STOP_ON_FAILURE)
 
-		String screenshotPrefix = RunConfiguration.getAppVersion() + "_d" + distance + "_t" + timeout		
+		String screenshotPrefix = RunConfiguration.getAppVersion() + "_d" + distance + "_t" + timeout
 		WebUI.takeScreenshot(outDir.resolve(screenshotPrefix + "_x.png").toString())
-		
+
 		LocalDateTime startAt = LocalDateTime.now()
 		boolean kwReturn = WebUI.waitForElementNotPresent(tObj, timeout)
 		LocalDateTime endAt = LocalDateTime.now()
@@ -47,6 +47,8 @@ public class KeywordDriver {
 
 		WebUI.takeScreenshot(outDir.resolve(screenshotPrefix + "_y.png").toString())
 
+		WebUI.delay(3)  // to show a static view at the end of movie
+		
 		WebUI.closeBrowser()
 
 		return ["distance": distance, "timeout": timeout, "kwReturn": kwReturn, "kwDuration": kwDuration]
