@@ -17,7 +17,7 @@ public class KeywordDriver {
 	Map<String, Object> drive(int distance, int timeout) {
 		WebUI.comment("Katalon Studio version: ${RunConfiguration.getAppVersion()}")
 
-		TestObject tObj = makeTestObject("demo", "#demo")
+		TestObject tObj = makeTestObject("clock", "#clock")
 
 		Path projectDir = Paths.get(RunConfiguration.getProjectDir())
 		Path html = projectDir.resolve("docs/page.html")
