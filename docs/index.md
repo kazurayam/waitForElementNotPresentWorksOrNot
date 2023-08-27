@@ -30,9 +30,9 @@ The page shows a Countdown clock. The clock has a countdown distance of 10 secon
 <img src="https://kazurayam.github.io/waitForElementNotPresentWorksOrNot/images/AUT_countDownClock.png" alt="Countdown Clock" />
 </figure>
 
-Internally the HTML contains an P element with id="demo" as this:
+Internally the HTML contains an P element with id="clock" as this:
 
-    <p id="demo">0d 0h 0m 8s</p>
+    <p id="clock">0d 0h 0m 8s</p>
 
 When the countdown clock reaches zero, then the clock will disappear. A message "Gone!" comes up.
 
@@ -40,7 +40,7 @@ When the countdown clock reaches zero, then the clock will disappear. A message 
 <img src="https://kazurayam.github.io/waitForElementNotPresentWorksOrNot/images/AUT_gone.png" alt="GONE" />
 </figure>
 
-Internally, the `<p id="demo">0d 0h 0m Xs</p>` element will be removed (becomes not present) when the clock reached zero.
+Internally, the `<p id="clock">0d 0h 0m Xs</p>` element will be removed (becomes not present) when the clock reached zero.
 
 ### Test scripts
 
@@ -68,9 +68,9 @@ The scripts uses 2 terms with special meaning. So let me define them.
 
 I have developed 2 cases of verification.
 
-**Test Case 1** : The distance is 10 seconds, timeout is **7** seconds. The target HTML element "demo" will still be there in the page when the timeout expires. The clock will remain in the page view. In this case, the keyword should stop immediately after the timeout. The keyword should return `false` to the caller script.
+**Test Case 1** : The distance is 10 seconds, timeout is **7** seconds. The target HTML element "clock" will still be there in the page when the timeout expires. The clock will remain in the page view. In this case, the keyword should stop immediately after the timeout. The keyword should return `false` to the caller script.
 
-**Test Case 2** : The distance is 10 seconds, timeout is **13** seconds. The target HTML element "demo" will disappear before the timeout expires. The clock will fade and a message "GONE" will comes up in the page view. In this case, *the keyword should stop immediately after the timeout*. The keyword should return `true` to the caller script.
+**Test Case 2** : The distance is 10 seconds, timeout is **13** seconds. The target HTML element "clock" will disappear before the timeout expires. The clock will fade and a message "GONE" will comes up in the page view. In this case, *the keyword should stop immediately after the timeout*. The keyword should return `true` to the caller script.
 
 #### Case where the HTML element is still present when the keyword gets timed out
 
