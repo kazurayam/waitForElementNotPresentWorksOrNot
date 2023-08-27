@@ -29,6 +29,8 @@ public class KeywordDriver {
 		sb.append("?ksVersion=${RunConfiguration.getAppVersion()}")
 		sb.append('&')
 		sb.append("distance=${distance}")
+		sb.append('&')
+		sb.append("timeout=${timeout}")
 		String urlString = sb.toString()
 
 		WebUI.openBrowser('')
@@ -47,8 +49,8 @@ public class KeywordDriver {
 
 		WebUI.takeScreenshot(outDir.resolve(screenshotPrefix + "_y.png").toString())
 
-		WebUI.delay(3)  // to show a static view at the end of movie
-		
+		WebUI.delay(1)  // to show a static view at the end of movie
+
 		WebUI.closeBrowser()
 
 		return ["distance": distance, "timeout": timeout, "kwReturn": kwReturn, "kwDuration": kwDuration]

@@ -11,16 +11,18 @@ body {
   background-color: lightgray;
 }
 p {
-  text-align: center!important;
-  margin-top: 1.2em;
-  margin-bottom: 1.2em;
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
   font-family: arial;
+  font-size: 18px;
 }
-#demo {
+.info {
+  text-align: center!important;
+  margin-top: 1.0em;
+  margin-bottom: 1.0em;
   font-size: 64px;
 }
 #msg {
-  font-size: 32px;
   color: #ff3300;
 }
   </style>
@@ -31,8 +33,9 @@ p {
   </head>
   <body>
   <!----- header----->
-  <header>Katalon Studio version: <span id="ksVersion"></span></header>
-  <!-- <nav>ナビ</nav> -->
+  <p>Katalon Studio version: <span id="ksVersion"></span></p>
+  <p>countdown distance: <span id="distance"></span></p>
+  <p>keyword timeout: <span id="timeout"></span></p>
   <!----- /header ----->
 
   <!----- main ----->
@@ -41,8 +44,8 @@ p {
   <section>
   <!-- <h2></h2> -->
   <!-- Display the countdown timer in an element -->
-  <p id="demo"></p>
-  <p id="msg"></p>
+  <p id="demo" class="info"></p>
+  <p id="msg" class="info"></p>
   </section>
   </article>
   <!----- /main ----->
@@ -60,6 +63,12 @@ p {
     if (searchParams.get("distance") != null) {
       dist = Number.parseInt(searchParams.get("distance"))
     }
+    document.getElementById("distance").innerHTML = dist
+
+    if (searchParams.get("timeout") != null) {
+      document.getElementById("timeout").innerHTML = searchParams.get("timeout")
+    }
+
     let start = new Date();
     // Set the date we're conting down to
     let countDownDate = start.setSeconds(start.getSeconds() + dist);
