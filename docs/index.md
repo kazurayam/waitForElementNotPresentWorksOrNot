@@ -10,23 +10,19 @@ In the Katalon User forum, there was a post
 
 The bug of waitForElementNotPresent keyword --- is it fixed at v8.6.5 or not?
 
-## Solution
+## What I have done
 
-I have developed a Katalon Studio project [kazurayam/waitForElementNotPresentWorksOrNot](https://github.com/kazurayam/waitForElementNotPresentWorksOrNot). With it, I examined how `WebUI.waitForElementNotPresent` keyword. How does the keyword works in v8.6.0 and in v8.6.5.
+I have developed a Katalon Studio project [kazurayam/waitForElementNotPresentWorksOrNot](https://github.com/kazurayam/waitForElementNotPresentWorksOrNot). With it, I examined how `WebUI.waitForElementNotPresent` keyword works in v8.4.1, v8.6.0 and v8.6.5.
 
-Based on the findings in the examination, I would conclude that the problem was already fixed at v8.6.5.
-
-## Description
-
-What was the original issue? How can I conclude the problem was fixed already? --- I will describe it as follows.
-
-### Download the project
+### How to download the project
 
 You can download the zip of this project from the [Releases](https://github.com/kazurayam/waitForElementNotPresentWorksOrNot/releases) page, unzip it, open it with your local Katalon Studio.
 
 ### Application Under Test
 
-You can see our Application Under Test at <https://kazurayam.github.io/waitForElementNotPresentWorksOrNot/page.html>
+You can see our Application Under Test at
+
+-   <https://kazurayam.github.io/waitForElementNotPresentWorksOrNot/page.html>
 
 The page shows a Countdown clock. The clock has a countdown distance of 10 seconds as default.
 
@@ -58,23 +54,42 @@ Please read the source codes for detail.
 
 -   [com.kazurayam.ks.waitforelementnotpresent.ResultEvaluator](https://github.com/kazurayam/waitForElementNotPresentWorksOrNot/blob/master/Keywords/com/kazurayam/ks/waitforelementnotpresent/ResultEvaluator.groovy)
 
-## Examining
+You can execute “Test Suites/TS1” which will execute “Test Cases/TC1\_d10\_t7” and “Test Cases/TC2\_d10\_t13” in this sequence. The `TS1` is enabled to take movies in MOV format. I converted the MOV movies to MP4, and posted them to YouTube.
 
-### using Katalon Studio v8.6.0
+### Study
 
-#### Test Cases/TC1\_d10\_t7
+I developed a set of test scripts in Katalon Studio which employs the `WebUI.waitForElementNotPresent(TestObject, int timeout)` keyword.
 
-10 seconds of clock distance, 7 seconds of kewyord timeout
+The scripts uses 2 terms with special meaning. So let me define them.
 
-[Movie of v8.6.0 TC1\_d10\_t7](https://youtu.be/SMwrdctzoV4)
+-   **distance** --- The countdown clock starts with the given distance (default=10), goes down by 1 second until it reaches 0.
 
-#### Test Cases/TC2\_d10\_t13
+-   **timeout** --- The `WebUI.waitForElementNotPresent` keyword requires an integer as 2nd argument "timeout".
 
-10 seconds of distance, timeout: 13secs
-[Movie of v8.6.0 TC2\_d10\_t13](https://youtu.be/Wx_MCK0QnMk)
+I have developed 2 cases of verification.
 
-### using Katalon Studio v8.6.5
+**Test Case 1** : The distance is 10 seconds, timeout is **7** seconds. The target HTML element "demo" will still be there in the page when the timeout expires. The clock will remain in the page view. In this case, the keyword should stop immediately after the timeout. The keyword should return `false` to the caller script.
 
-#### Test Cases/TC2\_d10\_t13
+**Test Case 2** : The distance is 10 seconds, timeout is **13** seconds. The target HTML element "demo" will disappear before the timeout expires. The clock will fade and a message "GONE" will comes up in the page view. In this case, *the keyword should stop immediately after the timeout*. The keyword should return `true` to the caller script.
 
-[Movie of v8.6.5 TC2\_d10\_t13](https://youtu.be/jY1ESJ1H21w)
+#### Case where the HTML element is still present when the keyword gets timed out
+
+[see the Movie (v8.4.1 TC2\_d10\_t7)](https://youtu.be/Uv3eeN5KHpM)
+
+#### Case where the HTML element disappears before the keyword gets timed out
+
+##### v8.4.1
+
+[see the Movie (v8.4.1 TC2\_d10\_t13)](https://youtu.be/AhmfkfkQMoA)
+
+##### v8.6.0
+
+[see the Movie (v8.6.0 TC2\_d10\_t13)](https://youtu.be/MGYcN6ea_Jo)
+
+##### v8.6.5
+
+[v8.6.5 TC2\_d10\_t13](https://youtu.be/EdzfIg0AqaU)
+
+## Conclusion
+
+Based on the findings in the examination, I would conclude that the [original problem](https://forum.katalon.com/t/katalon-studio-8-6-0-waitforelementnotpresent-bug-timeout/85476) raised by @petr.brezina was really fixed at v8.6.5.
