@@ -52,7 +52,7 @@ You can execute "`Test Suites/TS1`" which will execute "`Test Cases/TC1_d10_t7`"
 
 I developed a set of test scripts in Katalon Studio which employs the `WebUI.waitForElementNotPresent(TestObject, int timeout)` keyword.
 
-The scripts uses 2 terms with special meaning. So let me define them.
+The scripts use 2 terms with special meaning. So let me define them.
 
 - *distance* --- The countdown clock starts with the given distance (default=10), goes down by 1 second until it reaches 0.
 
@@ -60,35 +60,37 @@ The scripts uses 2 terms with special meaning. So let me define them.
 
 I have developed 2 cases of verification.
 
-*Test Case 1* : The distance is 10 seconds, timeout is *7* seconds. The target HTML element "clock" will still be there in the page when the timeout expires. The clock will remain in the page view. In this case, the keyword should stop immediately after the timeout. The keyword should return `false` to the caller script.
+*Test Case 1* : The distance is 10 seconds, timeout is *7* seconds. The target HTML element "clock" is there yet in the page when the timeout expires. The clock will remain in the page view. In this case, the keyword should stop immediately after the timeout. The keyword should return `false` to the caller script.
 
 *Test Case 2* : The distance is 10 seconds, timeout is *13* seconds. The target HTML element "clock" will disappear before the timeout expires. The clock will fade and a message "GONE" will comes up in the page view. In this case, __the keyword should stop immediately after the timeout__. The keyword should return `true` to the caller script.
 
 ==== Case where the HTML element is still present when the keyword gets timed out
 
-In this case, the `WebUI.waitForElementNotPresent` keyword worked just as expected in v8.4.1, v8.6.0 and v8.6.5.
+In this case, the `WebUI.waitForElementNotPresent` keyword worked just as expected in v8.4.1.
 
 https://youtu.be/Uv3eeN5KHpM[see the Movie (v8.4.1 TC2_d10_t7)]
+
+The keyword worked the same in v8.6.0 and v8.6.5 as well.
 
 
 ==== Case where the HTML element disappears before the keyword gets timed out
 
 This case is interesting. The `WebUI.waitForElementNotPresent` worked as expected in v8.4.1. But it started to behave strange in v8.6.0. And in v8.6.5, the problem was fixed.
 
-===== v8.4.1
+===== In v8.4.1
 
 It worked OK in v8.4.1.
 
 https://youtu.be/AhmfkfkQMoA[see the Movie (v8.4.1 TC2_d10_t13)]
 
-===== v8.6.0
+===== In v8.6.0
 
-The `WebUI.waitForElementNotPresent` behaves strange in v8.6.0. When the AUT page is opened, it starts displaying a countdown clock. After 10 seconds, the countdown expires; the clock disappears; a message "Gone" comes up in turn. The keyword would detect the clock is no longer there. We expect the keyword to return immediately when the clock disappears. However, **the keyword in v8.6.0 doesn't. The keyword blocked for more seconds**. This is the problem which link:https://forum.katalon.com/t/katalon-studio-8-6-0-waitforelementnotpresent-bug-timeout/85476[@petr.brezina] pointed out.
+The `WebUI.waitForElementNotPresent` behaves strange in v8.6.0. When the AUT page is opened, it starts displaying a countdown clock. After 10 seconds, the countdown expires; the clock disappears; a message "Gone" comes up in turn. The keyword would detect the clock is no longer there. We expect the keyword to return immediately when the clock disappears. However, **the keyword in v8.6.0 doesn't stop immediately. The keyword blocked for more seconds**. This is the problem which link:https://forum.katalon.com/t/katalon-studio-8-6-0-waitforelementnotpresent-bug-timeout/85476[@petr.brezina] pointed out.
 
 https://youtu.be/MGYcN6ea_Jo[See the Movie (v8.6.0 TC2_d10_t13)]
 
 
-===== v8.6.5
+===== In v8.6.5
 
 The `WebUI.waitForElementNotPresent` keyword in v8.6.5 behaves as expected.
 
