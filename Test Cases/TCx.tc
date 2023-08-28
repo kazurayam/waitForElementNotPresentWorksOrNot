@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>$ wkhtmltopdf 20230827_101110.html 20230827_101110.pdf
+Loading pages (1/6)
+Counting pages (2/6)                                               
+Resolving links (4/6)                                                       
+Loading headers and footers (5/6)                                           
+Printing pages (6/6)
+Done</description>
+   <name>TCx</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>33155993-c492-410f-af37-9667357149ca</testCaseGuid>
+</TestCaseEntity>
