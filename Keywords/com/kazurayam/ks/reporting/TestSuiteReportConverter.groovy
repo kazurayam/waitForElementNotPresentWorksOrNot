@@ -30,14 +30,16 @@ public class TestSuiteReportConverter {
 		//
 		Subprocess.CompletedProcess cp;
 		cp = new Subprocess().cwd(reportFolder.toFile())
-				.run(Arrays.asList("/usr/local/bin/wkhtmltopdf", "--debug-javascript",
-				"--run-script", "\"console.log('starting')\"",
-				"--run-script", "\"document.querySelector('h1').textContent='Hello, world'\"",
-				"--run-script", "\"console.log('finished')\"",
+				.run(Arrays.asList(
+				"/usr/local/bin/wkhtmltopdf",
+				"--debug-javascript",
+				"--run-script", "console.log('starting')",
+				"--run-script", "document.querySelector('h1').textContent = 'Hello'",
+				"--run-script", "expandAllChildren('s1')",
+				"--run-script", "console.log('finished')",
 				"--javascript-delay", "1000",
 				htmlFileName, pdfFileName));
 		assert 0 == cp.returncode()
-		cp.stdout().each { line -> println line }
-		cp.stderr().each { line -> println line }
+		println cp.toString()
 	}
 }
